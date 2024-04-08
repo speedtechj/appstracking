@@ -1,6 +1,7 @@
 <?php
 
 
+
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::get('/trackinvoice', function () {
-    $users = Booking::all();
+    $users = Booking::all()->take(10);
     return $users;
 
 });
