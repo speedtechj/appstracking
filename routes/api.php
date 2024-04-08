@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get('/trackinvoice', function () {
-    $users = Booking::all()->take(10);
+Route::get('/trackinvoice/{invoice}', function (string $invoice) {
+    $users = Booking::where('invoice', $invoice)->get();
     return $users;
 
 });
