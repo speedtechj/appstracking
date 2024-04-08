@@ -20,11 +20,11 @@ Route::get('/trackinvoice/{invoice}', function (string $invoice) {
     $datastatus = $datas = Invoicestatus::where('generated_invoice', $invoice)
     ->orWhere('manual_invoice',  $invoice)
     ->get();
-
+    $data['status'] = $datastatus;
 
     // $data['sender'] = Sender::where('id', $datas->sender_id)->get()->first();
     // $data['invoicestatus'] = Invoicestatus::where('')
     // dd($datas->sender_id);
-    return $datastatus;
+    return $data;
 
 });
