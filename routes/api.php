@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get('/test', function () {
+Route::get('/trackinvoice', function () {
     $users = User::all();
     return $users;
 
