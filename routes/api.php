@@ -2,6 +2,7 @@
 
 
 
+use App\Models\Sender;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
@@ -12,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::get('/trackinvoice/{invoice}', function (string $invoice) {
-    $users = Booking::where('invoice', $invoice)->get();
-    return $users;
+    $datas = Booking::where('booking_invoice', $invoice)
+    ->orWhere('manual_invoice',  $invoice)
+    ->get()->first();
+    $data['sender'] = Sender::where('id', $datas->sender_id)->get()->first();
+    // dd($datas->sender_id);
+    return $data;
 
 });
