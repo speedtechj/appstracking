@@ -9,4 +9,10 @@ class Invoicestatus extends Model
 {
     use HasFactory;
     protected $table = 'invoicestatuses';
+   
+    public function trackstatus()
+    {
+        return $this->belongsTo(Trackstatus::class);
+    }
+    
 }

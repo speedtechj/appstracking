@@ -17,7 +17,9 @@ Route::get('/trackinvoice/{invoice}', function (string $invoice) {
     // $datas = Booking::where('booking_invoice', $invoice)
     // ->orWhere('manual_invoice',  $invoice)
     // ->get()->first();
-    $datastatus = $datas = Invoicestatus::where('generated_invoice', $invoice)
+    $datastatus = $datas = Invoicestatus::
+    with('trackstatus')
+    ->where('generated_invoice', $invoice)
     ->orWhere('manual_invoice',  $invoice)
     ->get();
     $data['status'] = $datastatus;
